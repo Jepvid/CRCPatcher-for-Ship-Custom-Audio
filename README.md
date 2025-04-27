@@ -39,22 +39,22 @@ This tool simplifies the process of creating a CRC patch for audio modding when 
 2. Navigate to the folder where the executable is located.
 3. This tool needs to be run from the terminal. Instructions are provided below for each OS. Additionally, you may need to give the executable permission to run by using the following command:
    - **Linux**: 
-   ```bash
-   chmod +x patched_rom_linux
-   ```
+      ```bash
+      chmod +x patched_rom_linux
+      ```
    - **macOS**: 
-   ```bash
-   chmod +x patched_rom_macos
-   ```
+      ```bash
+      chmod +x patched_rom_macos
+      ```
 5. Run the executable:
    - **Linux**:  
-     ```bash
-     ./patched_rom_linux
-     ```
+      ```bash
+      ./patched_rom_linux
+      ```
    - **macOS**:  
-     ```bash
-     ./patched_rom_macos
-     ```
+      ```bash
+      ./patched_rom_macos
+      ```
 
 4. Follow the on-screen prompts to enter the required paths.
 
