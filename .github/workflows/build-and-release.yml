@@ -1,20 +1,19 @@
-# .github/workflows/build-and-release.yml
 name: Build and Auto-Release
 
 on:
   push:
     branches:
-      - main  # Runs on every push to main branch
+      - main  # Runs on every push to the main branch
 
 permissions:
-  contents: write  # <--- IMPORTANT! allow creating releases
+  contents: write  # Allow creating releases
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-20.04, windows-latest, macos-latest]  # Use ubuntu-20.04 which includes glibc 2.28
 
     steps:
       - name: Checkout code
@@ -73,11 +72,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: auto-release-${{ github.run_number }}
-          name: "Automatic Build ${{ github.run_number }}"  # <-- changed release_name -> name
+          name: "Automatic Build ${{ github.run_number }}"  # changed release_name -> name
           body: |
             ⚙️ These files are automatically built by GitHub Actions.
-
-            This ensures transparency and that you are getting unmodified builds directly from the latest source code.
 
             🛠 Built for:
             - Windows (.exe)
