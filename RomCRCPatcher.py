@@ -2,7 +2,12 @@ import sys
 import os
 from pathlib import Path
 
-SCRIPT_DIR = Path(__file__).resolve().parent
+# Detect if script is running as a standalone executable
+if getattr(sys, 'frozen', False):
+    SCRIPT_DIR = Path(sys.executable).resolve().parent
+else:
+    SCRIPT_DIR = Path(__file__).resolve().parent
+
 SETTINGS_FILE = SCRIPT_DIR / "settings.txt"
 OUTPUT_ROM = SCRIPT_DIR / "patched_rom.z64"
 
@@ -10,15 +15,18 @@ def check_required_files():
     required_files = ["soh.exe", "soh.otr"]
     missing = []
 
+    print(f"📂 Current directory: {SCRIPT_DIR}")  # Debugging line
     for filename in required_files:
-        if not (SCRIPT_DIR / filename).exists():
-            missing.append(filename)
+        file_path = SCRIPT_DIR / filename
+        print(f"Checking: {file_path}")  # Debugging line
+        if not file_path.exists():
+            missing.append(file_path)
 
     if missing:
         print("❌ ERROR: This script must be placed in a folder that contains:")
         for file in required_files:
             print(f" - {file}")
-        print("\nMissing files:", ', '.join(missing))
+        print("\nMissing files:", ', '.join(str(missing)))
         input("\n⏳ Press ENTER to exit...")
         sys.exit(1)
     else:
@@ -60,7 +68,7 @@ def sanity_warning(settings):
 
     confirm = input("Your response: ").strip()
 
-    if confirm == "Yes, I understand the warning and to want not have the warnings":
+    if confirm == "Yes, I understand the warning and want to not have the warnings":
         settings['warned_mode'] = 'full'
         save_settings(settings)
         print("\n✅ Full confirmation saved. You will not see this warning again.")
@@ -72,7 +80,6 @@ def sanity_warning(settings):
         print("\n❌ Invalid response. Aborting for your safety.")
         input("⏳ Press ENTER to exit...")
         sys.exit(1)
-
 
 def delete_roms_and_otr():
     deleted_files = []
@@ -125,4 +132,3 @@ if __name__ == "__main__":
     sanity_warning(settings)    # ⚡ Warn about deletes
     delete_roms_and_otr()       # 🧹 Clean up files
     patch_n64_rom(clean_rom, decomp_rom, OUTPUT_ROM)  # ✨ Patch rom
-
