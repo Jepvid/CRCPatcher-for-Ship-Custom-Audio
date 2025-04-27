@@ -15,10 +15,8 @@ def check_required_files():
     required_files = ["soh.exe", "soh.otr"]
     missing = []
 
-    print(f"📂 Current directory: {SCRIPT_DIR}")  # Debugging line
     for filename in required_files:
         file_path = SCRIPT_DIR / filename
-        print(f"Checking: {file_path}")  # Debugging line
         if not file_path.exists():
             missing.append(file_path)
 
