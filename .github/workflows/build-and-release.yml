@@ -64,6 +64,15 @@ jobs:
         with:
           tag_name: auto-release-${{ github.run_number }}
           release_name: "Automatic Build ${{ github.run_number }}"
+          body: |
+            ⚙️ These files are automatically built by GitHub Actions.
+            
+            🛠 Built for:
+            - Windows (.exe)
+            - Linux (binary)
+            - macOS (binary)
           files: artifacts/**/*.*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
