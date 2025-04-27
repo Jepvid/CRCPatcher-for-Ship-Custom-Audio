@@ -28,16 +28,23 @@ jobs:
       - name: Build Executable
         run: pyinstaller --onefile RomCRCPatcher.py
 
-      - name: Rename Executable
+      - name: Rename Executable (Windows)
+        if: runner.os == 'Windows'
         run: |
           mkdir upload
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            mv dist/RomCRCPatcher.exe upload/patched_rom_windows.exe
-          elif [[ "${{ runner.os }}" == "macOS" ]]; then
-            mv dist/RomCRCPatcher upload/patched_rom_macos
-          else
-            mv dist/RomCRCPatcher upload/patched_rom_linux
-          fi
+          move dist\RomCRCPatcher.exe upload\patched_rom_windows.exe
+
+      - name: Rename Executable (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          mkdir upload
+          mv dist/RomCRCPatcher upload/patched_rom_macos
+
+      - name: Rename Executable (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          mkdir upload
+          mv dist/RomCRCPatcher upload/patched_rom_linux
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -66,13 +73,13 @@ jobs:
           release_name: "Automatic Build ${{ github.run_number }}"
           body: |
             ⚙️ These files are automatically built by GitHub Actions.
-            
+
+            This ensures transparency and that you are getting unmodified builds directly from the latest source code.
+
             🛠 Built for:
             - Windows (.exe)
             - Linux (binary)
             - macOS (binary)
-          files: artifacts/**/*.*
+          files: artifacts/**/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
