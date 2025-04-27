@@ -38,10 +38,15 @@ This tool simplifies the process of creating a CRC patch for audio modding when 
 1. Open a terminal window.
 2. Navigate to the folder where the executable is located.
 3. This tool needs to be run from the terminal. Instructions are provided below for each OS. Additionally, you may need to give the executable permission to run by using the following command:
+   **Linux**
    ```bash
-   chmod +x patched_rom_linux  # For Linux
-   chmod +x patched_rom_macos  # For macOS
-4. Run the executable:
+   chmod +x patched_rom_linux
+   ```
+   **macOS**
+   ```bash
+   chmod +x patched_rom_macos
+   ```
+5. Run the executable:
    - **Linux**:  
      ```bash
      ./patched_rom_linux
@@ -72,7 +77,3 @@ When you run the executable for the first time, the following steps will occur:
 
 4. **Patch the ROM**:  
    Once you've confirmed the deletion, the executable will patch the ROM with the CRC values from the decompiled ROM and save it as a new patched ROM (`patched_rom.z64`).
-
-## Contribution
-
-If you'd like to contribute to this project or make improvements, feel free to open a pull request or submit an issue.
