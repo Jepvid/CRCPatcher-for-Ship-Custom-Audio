@@ -2,6 +2,11 @@
 
 This tool simplifies the process of creating a CRC patch for audio modding when using the **Decomp** method in *Ship of Harkinian*. It automates the steps necessary to patch your ROM and prepare it for modding, all in a simple click-and-run executable.
 
+## Important Notes
+
+- **Back Up Your Files**: The executable will delete all `.z64` files and `oot.otr` in the folder, so make sure to back up any important files before running it.
+- **This Tool Simplifies Step 6** of the guide found on [GameBanana](https://gamebanana.com/tuts/18686).
+
 ## Setup
 
 1. **Download the Latest Release**  
@@ -32,7 +37,11 @@ This tool simplifies the process of creating a CRC patch for audio modding when 
 ### For Linux and macOS Users:
 1. Open a terminal window.
 2. Navigate to the folder where the executable is located.
-3. Run the executable:
+3. This tool needs to be run from the terminal. Instructions are provided below for each OS. Additionally, you may need to give the executable permission to run by using the following command:
+   ```bash
+   chmod +x patched_rom_linux  # For Linux
+   chmod +x patched_rom_macos  # For macOS
+4. Run the executable:
    - **Linux**:  
      ```bash
      ./patched_rom_linux
@@ -63,33 +72,6 @@ When you run the executable for the first time, the following steps will occur:
 
 4. **Patch the ROM**:  
    Once you've confirmed the deletion, the executable will patch the ROM with the CRC values from the decompiled ROM and save it as a new patched ROM (`patched_rom.z64`).
-
-## Important Notes
-
-- **Back Up Your Files**: The executable will delete all `.z64` files and `oot.otr` in the folder, so make sure to back up any important files before running it.
-- **This Tool Simplifies Step 6** of the guide found on [GameBanana](https://gamebanana.com/tuts/18686).
-
-## Example Usage
-
-### Windows:
-1. Double-click `patched_rom_windows.exe`.
-2. Follow the prompts in the command window.
-
-### Linux/macOS:
-1. Open the terminal and navigate to the folder with the executable.
-2. Run the appropriate command:
-   - **Linux**:  
-     ```bash
-     ./patched_rom_linux
-     ```
-   - **macOS**:  
-     ```bash
-     ./patched_rom_macos
-     ```
-
-3. Follow the prompts to enter the clean ROM and decompiled ROM paths. Once confirmed, the executable will patch the ROM and output the result.
-
----
 
 ## Contribution
 
