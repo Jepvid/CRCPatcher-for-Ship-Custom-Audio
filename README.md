@@ -73,7 +73,7 @@ When you run the executable for the first time, the following steps will occur:
      Enter the path to the decompiled ROM (`rom.z64`).
 
 3. **Warning about File Deletion**:  
-   The executable will display a warning that it will **delete all `.z64` files** and `oot.otr` in the folder before patching. You must confirm your understanding by typing "Yes" to continue or "No" to cancel.
+   The executable will display a warning that it will **delete all `.z64` files** and `oot.otr` in the folder before patching. You must follow the instruction to confirm the warning in order to proceed.
 
 4. **Patch the ROM**:  
    Once you've confirmed the deletion, the executable will patch the ROM with the CRC values from the decompiled ROM and save it as a new patched ROM (`patched_rom.z64`).
