@@ -6,6 +6,9 @@ on:
     branches:
       - main  # Runs on every push to main branch
 
+permissions:
+  contents: write  # <--- IMPORTANT! allow creating releases
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -70,7 +73,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: auto-release-${{ github.run_number }}
-          release_name: "Automatic Build ${{ github.run_number }}"
+          name: "Automatic Build ${{ github.run_number }}"  # <-- changed release_name -> name
           body: |
             ⚙️ These files are automatically built by GitHub Actions.
 
