@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, windows-latest, macos-latest]  # Use ubuntu-20.04 which includes glibc 2.28
+        os: [ubuntu-22.04, windows-latest, macos-latest]  # Updated to ubuntu-22.04 for glibc 2.35
 
     steps:
       - name: Checkout code
